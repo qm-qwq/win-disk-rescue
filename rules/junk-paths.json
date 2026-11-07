@@ -1,0 +1,41 @@
+{
+  "$comment": "Cache / temporary locations that are safe to empty. Use %VARS% and ~ for the user profile. Nothing outside this list is ever touched by Clean-Safe.",
+  "cacheDirs": [
+    { "path": "%LOCALAPPDATA%\\Temp",                      "reason": "user temp folder",            "minAgeDays": 1 },
+    { "path": "%SystemRoot%\\Temp",                        "reason": "system temp folder",          "minAgeDays": 1 },
+    { "path": "%LOCALAPPDATA%\\CrashDumps",                "reason": "application crash dumps",     "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\Microsoft\\Windows\\INetCache", "reason": "IE/Edge legacy cache",    "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\Microsoft\\Windows\\Explorer",  "reason": "thumbnail cache",         "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\pip\\cache",                "reason": "pip wheel cache",             "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\npm-cache",                 "reason": "npm cache",                   "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\Yarn\\Cache",               "reason": "yarn cache",                  "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\pnpm\\store",               "reason": "pnpm content store",           "minAgeDays": 0 },
+    { "path": "%USERPROFILE%\\.cache",                     "reason": "generic dot-cache",           "minAgeDays": 0 },
+    { "path": "%USERPROFILE%\\.gradle\\caches",            "reason": "gradle caches",               "minAgeDays": 0 },
+    { "path": "%USERPROFILE%\\.nuget\\packages",           "reason": "nuget package cache",         "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\JetBrains\\Toolbox\\logs",  "reason": "JetBrains toolbox logs",      "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\D3DSCache",                 "reason": "Direct3D shader cache",       "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\NVIDIA\\DXCache",           "reason": "NVIDIA shader cache",         "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\NVIDIA\\GLCache",           "reason": "NVIDIA GL cache",             "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\AMD\\DxCache",              "reason": "AMD shader cache",            "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\Microsoft\\Terminal Server Client\\Cache", "reason": "RDP bitmap cache", "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\Microsoft\\Windows\\WER",   "reason": "Windows Error Reporting",     "minAgeDays": 0 },
+    { "path": "%ProgramData%\\Microsoft\\Windows\\WER\\ReportQueue",  "reason": "WER queue",         "minAgeDays": 0 },
+    { "path": "%ProgramData%\\Microsoft\\Windows\\WER\\Temp",         "reason": "WER temp",          "minAgeDays": 0 },
+    { "path": "%LOCALAPPDATA%\\Package Cache",             "reason": "installer payload cache",     "minAgeDays": 0 },
+    { "path": "%SystemRoot%\\SoftwareDistribution\\Download", "reason": "Windows Update downloads", "minAgeDays": 0 },
+    { "path": "%SystemRoot%\\Logs\\CBS",                   "reason": "component servicing logs",    "minAgeDays": 0 }
+  ],
+
+  "$comment2": "Folder names that are treated as disposable cache when found under an application folder. Only paths under cacheScanRoots are searched.",
+  "relativeCacheNames": [
+    "Cache", "Code Cache", "GPUCache", "CachedData", "CacheStorage",
+    "ShaderCache", "GrShaderCache", "DawnCache", "DawnGraphiteCache",
+    "Crashpad", "CachedExtensionVSIXs", "blob_storage"
+  ],
+
+  "cacheScanRoots": [
+    "%LOCALAPPDATA%",
+    "%APPDATA%"
+  ]
+}

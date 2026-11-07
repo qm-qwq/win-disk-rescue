@@ -1,0 +1,14 @@
+{
+  "$comment": "Autostart entries that must never be flagged or disabled. name = entry name (wildcards allowed), match = substring of the command line.",
+  "entries": [
+    { "name": "SecurityHealth",       "match": "SecurityHealthSystray.exe",                 "why": "Windows Security tray" },
+    { "name": "RtkAudUService*",      "match": "RtkAudUService64",                          "why": "Realtek audio service" },
+    { "name": "IgfxTray",             "match": "igfxtray.exe",                              "why": "Intel graphics tray" },
+    { "name": "NvBackend",            "match": "NvBackend",                                 "why": "NVIDIA backend" },
+    { "name": "SunloginClient",       "match": "SunloginClient",                            "why": "user-installed remote desktop tool" },
+    { "name": "Everything",           "match": "everything.exe",                            "why": "user indexer" },
+    { "name": "PowerToys*",           "match": "PowerToys",                                 "why": "PowerToys autorun" },
+    { "name": "Clash*",               "match": "Clash",                                     "why": "proxy client" },
+    { "name": "Syncthing*",           "match": "syncthing",                                 "why": "file sync" }
+  ]
+}
