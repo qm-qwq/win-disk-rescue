@@ -1,5 +1,11 @@
 # win-disk-rescue
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/qm-qwq/win-disk-rescue/blob/main/LICENSE)
+[![PowerShell 5.1+](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell&logoColor=white)](https://github.com/qm-qwq/win-disk-rescue)
+[![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)](https://github.com/qm-qwq/win-disk-rescue)
+[![Release](https://img.shields.io/github/v/release/qm-qwq/win-disk-rescue?color=blue&label=release)](https://github.com/qm-qwq/win-disk-rescue/releases)
+[![Stars](https://img.shields.io/github/stars/qm-qwq/win-disk-rescue?style=flat)](https://github.com/qm-qwq/win-disk-rescue/stargazers)
+
 Windows 磁盘空间诊断与回收工具。**先告诉你空间去哪了，再问你敢不敢删。**
 
 不是又一个"清缓存"软件。清缓存那点收益，一次浏览器更新就长回来了。这个工具找的是真正吃盘的东西：WSL 虚拟磁盘、固定大小的页面文件、解压完忘了删的压缩包、被塞在 `\Microsoft\` 任务路径下伪装的恶意启动项。
@@ -10,6 +16,18 @@ Windows 磁盘空间诊断与回收工具。**先告诉你空间去哪了，再�
   root: C:\
   admin: False
 ```
+
+> 仓库：<https://github.com/qm-qwq/win-disk-rescue> · 有问题直接开 [issue](https://github.com/qm-qwq/win-disk-rescue/issues)
+
+## 快速开始
+
+```powershell
+git clone https://github.com/qm-qwq/win-disk-rescue.git
+cd win-disk-rescue
+.\Invoke-DiskRescue.ps1          # 先看，什么都不删
+```
+
+不想用 git 的话，从 [Releases](https://github.com/qm-qwq/win-disk-rescue/releases) 下载 zip，解压即用。
 
 ## 为什么不用现成的清理软件
 
@@ -22,7 +40,7 @@ Windows 磁盘空间诊断与回收工具。**先告诉你空间去哪了，再�
 | 把伪装的计划任务当系统组件 | 按路径 + 签名 + 元数据打分，专抓 `\Microsoft\Windows\AppID\HandleCommand` 这种货色 |
 | 删了没法回滚 | 默认只读；`-Apply` 才动手；注册表项自动备份成 JSON |
 
-## 快速开始
+## 常用命令
 
 ```powershell
 # 1. 先看报告，什么都不删（默认就是这个模式）
@@ -214,6 +232,12 @@ win-disk-rescue/
 - `-Mode Admin` 的每一步都要管理员权限，非提权状态下会明确提示并跳过，不会静默失败
 - 搬移 WSL 会先 `wsl --shutdown`，正在运行的 Linux 任务会被中断
 - 页面文件改动需要重启才生效
+
+## 参与
+
+- 发现误报：改 `rules/autostart-allowlist.json` 加一条就能解决，欢迎直接提 PR
+- 发现漏报：在 [issue](https://github.com/qm-qwq/win-disk-rescue/issues) 里贴上 `-Json` 的输出（记得删掉敏感路径）
+- 新增大件识别：`lib/Scan.ps1` 里的 `Find-MovableHeavyweights`，加一个分支就行
 
 ## License
 
